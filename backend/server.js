@@ -7,7 +7,8 @@ const port = process.env.PORT || 4000
 
 app.use(cors());
 app.use(express.json()); 
-const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+// const frontendUrl ="http://localhost:5173";
+const frontendUrl = "https://mock-ecommerce-1.onrender.com";
 
 
 app.post('/create-checkout-session', async (req, res) => {
