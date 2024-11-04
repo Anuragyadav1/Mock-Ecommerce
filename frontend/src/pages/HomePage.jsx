@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { products } from '../data/mockProducts';
+
 
 function HomePage() {
+    const featuredProducts = products.slice(13,16); // Adjust the number of products displayed here
     return (
         <div className="p-6 bg-gray-50">
             {/* Hero Section */}
@@ -14,19 +17,19 @@ function HomePage() {
             </section>
             
             {/* Featured Products */}
-            <section>
-                <h2 className="text-3xl font-bold mb-4">Featured Products</h2>
-                {/* This would display a few products as cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {/* Example product cards */}
-                    <div className="bg-white p-6 rounded-lg shadow-md">
-                        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Product A" className="w-full h-48 object-cover rounded mb-4" />
-                        <h3 className="text-lg font-semibold">Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h3>
-                        <p className="text-gray-600">$109.95</p>
-                    </div>
-                    {/* Add more featured products similarly */}
-                </div>
-            </section>
+        <section>
+            <h2 className="text-3xl font-bold mb-4">Featured Products</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {featuredProducts.map((product) => (
+                    <Link to={`/products/${product.id}`} key={product.id} className="product-card">
+                        <img src={product.image} alt={product.title} className="w-full h-48 object-cover rounded mb-4" />
+                        <h3 className="text-lg font-semibold">{product.title}</h3>
+                        <p className="text-gray-600">${product.price.toFixed(2)}</p>
+                        <p className="text-sm text-gray-500 mt-1">Rating: {product.rating.rate} ({product.rating.count} reviews)</p>
+                    </Link>
+                ))}
+            </div>
+        </section>
         </div>
     );
 }
