@@ -3,6 +3,7 @@ const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_KEY); // Your test secret key
 const app = express();
 const cors = require('cors');
+const port = process.env.PORT || 4000
 
 app.use(cors());
 app.use(express.json()); 
@@ -44,4 +45,4 @@ app.post('/create-checkout-session', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(port, () => console.log(`Server running on port ${port}`));
