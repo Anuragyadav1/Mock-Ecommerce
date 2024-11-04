@@ -7,7 +7,8 @@ function CartPage() {
     const { cart, removeFromCart, clearCart, addToCart, decreaseQuantity } = useCart();
     // console.log(cart)
 
-    const URL = "http://localhost:5000"
+    // const URL = "http://localhost:4000"
+    const URL = "https://mock-ecommerce-tv6a.onrender.com"
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
