@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
+
 function CartPage() {
     const { cart, removeFromCart, clearCart, addToCart, decreaseQuantity } = useCart();
     // console.log(cart)
+    const [loading, setLoading] = useState(false);
+
 
     // const URL = "http://localhost:4000"
     const URL = "https://mock-ecommerce-tv6a.onrender.com"
@@ -13,6 +16,8 @@ function CartPage() {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const makePayment = async () => {
+        setLoading(true); // Disable button when clicked
+
         const stripe = await loadStripe('pk_test_51OInpfSDY4zO64ajt9jx4McsTdNvhmzYSzaDwL02rAL0y0ykUkI6RHP6k1d94iS368Gs7fRTrYvs8pBIijAsAaaj00tQIV7Puw');
         
         try {
@@ -25,6 +30,9 @@ function CartPage() {
             }
         } catch (error) {
             console.error("Error creating checkout session:", error);
+        }
+        finally {
+            setLoading(false); // Re-enable button after payment attempt
         }
     }
 
@@ -68,8 +76,11 @@ function CartPage() {
                         <p className="text-xl font-bold mt-12 ml-6">Total: ${total.toFixed(2)}</p>
                         <div className="flex space-x-4">
                           {/* <Link to="/checkout" className="btn-primary mt-12"> Checkout </Link> */}
-                            <button onClick={makePayment} className='btn-primary mt-12'>
-                                Pay Now
+                            <button onClick={makePayment} 
+                              className={`btn-primary mt-12 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                              disabled={loading}
+                             >
+                              {loading ? 'Processing...' : 'Pay Now'}
                             </button>
                             <button onClick={clearCart} className="btn-secondary mt-12">
                                 Clear Cart

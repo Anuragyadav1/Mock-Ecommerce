@@ -21,8 +21,8 @@ function ProductDetailPage() {
     return (
         <div className="p-6 bg-gray-50">
             <div className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row gap-6">
-                <img src={product.image} alt={product.title} className="w-full md:w-1/2 h-64 object-cover rounded" />
-                <div className="flex-1">
+            <img src={product.image} alt={product.title} className="w-full md:w-1/2 h-64 object-contain rounded" />
+            <div className="flex-1">
                     <h2 className="text-3xl font-bold">{product.title}</h2>
                     <p className="text-gray-600 mt-4">{product.description}</p>
                     <p className="text-2xl font-semibold text-blue-600 mt-4">${product.price.toFixed(2)}</p>
