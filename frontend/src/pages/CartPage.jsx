@@ -10,8 +10,8 @@ function CartPage() {
     const [loading, setLoading] = useState(false);
 
 
-    const URL = "http://localhost:5000"
-    // const URL = "https://mock-ecommerce-tv6a.onrender.com"
+    // const URL = "http://localhost:5000"
+    const URL = "https://mock-ecommerce-tv6a.onrender.com"
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -37,7 +37,7 @@ function CartPage() {
     }
 
     return (
-        <div className="p-6 bg-gray-50">
+        <div className="p-6 bg-gray-50 min-h-screen">
             <h2 className="text-3xl font-bold mb-6">Shopping Cart</h2>
             {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
