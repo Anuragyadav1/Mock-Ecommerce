@@ -37,7 +37,7 @@ function CartPage() {
     }
 
     return (
-        <div className="p-6 bg-gray-50 min-h-screen">
+        <div className="p-6 bg-gray-50 ">
             <h2 className="text-3xl font-bold mb-6">Shopping Cart</h2>
             {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
@@ -59,13 +59,13 @@ function CartPage() {
                                 <div className="flex items-center">
                                     <button
                                         onClick={() => addToCart({ ...item, quantity: 1 })}
-                                        className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
+                                        className="bg-gray-200 p-4 rounded-md hover:bg-gray-300">
                                         +
                                     </button>
                                     <span className="mx-2">{item.quantity}</span>
                                     <button
                                         onClick={() => decreaseQuantity(item.id)} // Decrease quantity
-                                        className="bg-gray-200 p-2 rounded-md hover:bg-gray-300">
+                                        className="bg-gray-200 p-4 rounded-md hover:bg-gray-300">
                                         -
                                     </button>
                                 </div>
@@ -73,16 +73,16 @@ function CartPage() {
                         </div>
                     ))}
                     <div className="flex justify-between items-center mt-6">
-                        <p className="text-xl font-bold mt-12 ml-6">Total: ${total.toFixed(2)}</p>
+                        <p className="text-xl font-bold mt-10 ml-6 mb-8">Total: ${total.toFixed(2)}</p>
                         <div className="flex space-x-4">
                           {/* <Link to="/checkout" className="btn-primary mt-12"> Checkout </Link> */}
                             <button onClick={makePayment} 
-                              className={`btn-primary mt-12 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                              className={`btn-primary mt-10 mb-8 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                               disabled={loading}
                              >
                               {loading ? 'Processing...' : 'Pay Now'}
                             </button>
-                            <button onClick={clearCart} className="btn-secondary mt-12">
+                            <button onClick={clearCart} className="btn-secondary mt-10 mb-8">
                                 Clear Cart
                             </button>
                         </div>
