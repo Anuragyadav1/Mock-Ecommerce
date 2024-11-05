@@ -9,6 +9,7 @@ import PaymentSuccessPage from './pages/PaymentSuccessPage';
 import PaymentFailurePage from './pages/PaymentFailurePage';
 import { CartProvider } from './context/CartContext';
 import Navbar from './pages/Navbar';
+import Footer from './pages/Footer';
 
 // Replace with your own public Stripe key
 // const stripePromise = loadStripe('pk_test_51OInpfSDY4zO64ajt9jx4McsTdNvhmzYSzaDwL02rAL0y0ykUkI6RHP6k1d94iS368Gs7fRTrYvs8pBIijAsAaaj00tQIV7Puw');
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/payment-success" element={<PaymentSuccessPage />} />
                         <Route path="/payment-failure" element={<PaymentFailurePage />} />
                     </Routes>
+                    <Footer/>
             </Router>
         </CartProvider>
     );

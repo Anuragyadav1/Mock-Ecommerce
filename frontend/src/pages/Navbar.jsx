@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="bg-blue-600 p-4 text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-xl font-semibold">
-          My eCommerce
+          MockShop
         </Link>
         <div className="flex items-center space-x-6">
           <Link to="/" className="hover:underline">
